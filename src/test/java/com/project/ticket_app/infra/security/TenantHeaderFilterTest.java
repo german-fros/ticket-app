@@ -22,7 +22,7 @@ public class TenantHeaderFilterTest {
     private MockMvc mockMvc;
 
     @Test
-    @DisplayName("Should return 400 Bad Request when X-Tenant-ID header is missing")
+    @DisplayName("Should return 400 Bad Request when 'X-Tenant-ID' header is missing")
     void whenTenantHeaderIsMissing_shouldReturn400BadRequest() throws Exception {
         mockMvc.perform(get("/api/v1/events"))
                 .andExpect(status().isBadRequest())
@@ -31,7 +31,7 @@ public class TenantHeaderFilterTest {
     }
 
     @Test
-    @DisplayName("Should return 200 OK when X-Tenant-ID header is present")
+    @DisplayName("Should return 200 OK when 'X-Tenant-ID' header is present")
     void whenTenantHeaderIsPresent_shouldReturn200OK() throws Exception {
         mockMvc.perform(get("/api/v1/events")
                         .header("X-Tenant-ID", "tenant-alpha"))
